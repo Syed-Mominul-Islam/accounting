@@ -11,8 +11,9 @@ $user_name = $_POST['username'];
 $email = $_POST['mail'];       
 $raw_password = $_POST['password'];
 $pword = password_hash($raw_password, PASSWORD_DEFAULT );
+$userroleid = $_POST['user_role_id'];
 
-$update_query = "UPDATE snit_user_list SET first_name = '$first_name', last_name = '$lastname', username = '$user_name', email = '$email', password = '$pword' WHERE id = $id ";
+$update_query = "UPDATE snit_user_list SET first_name = '$first_name', last_name = '$lastname', username = '$user_name', email = '$email', password = '$pword', user_role_id = '$userroleid' WHERE id = $id ";
 
   $db->query($update_query);
   echo "updated successfully";

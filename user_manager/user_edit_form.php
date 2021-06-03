@@ -70,6 +70,28 @@
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="<?php echo $row['password']; ?>">
                 </div>
+
+
+                <div class="form-group">    
+      
+                    <label for="exampleInputPassword1">Choose a User Role Id:</label>
+                    <select class="form-control select2" style="width: 100%;" name="user_role_id" id="cars">
+                      <?php 
+                         $user_role_quary = "select id, role_name  from snit_user_role_list where 1";
+                         $update = $db->query($user_role_quary);
+
+
+                         while ($row = mysqli_fetch_array($update)) {
+                            
+                          echo '<option selected="selected" value="'.$row['id'].'">'.$row['role_name'].'</option>';
+                         }
+                      ?>
+                        
+                        
+                    </select>
+
+               </div> 
+
                                           
               </div>
               <!-- /.card-body -->

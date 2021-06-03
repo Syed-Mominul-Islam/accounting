@@ -61,7 +61,32 @@
          <div class="form-group">
           <label for="exampleInputPassword1">Retype Password</label>
           <input type="password" name="retypepassword" class="form-control" id="exampleInputPassword1" placeholder="Enter Retype Password">
-        </div>        
+        </div> 
+
+
+
+        <div class="form-group">    
+      
+            <label for="exampleInputPassword1">Choose a User Role Id:</label>
+            <select class="form-control select2" style="width: 100%;" name="user_role_id" id="cars">
+                      <?php 
+                         $user_role_quary = "select id, role_name  from snit_user_role_list where 1";
+                         $update = $db->query($user_role_quary);
+
+
+                         while ($row = mysqli_fetch_array($update)) {
+                            
+                          echo '<option selected="selected" value="'.$row['id'].'">'.$row['role_name'].'</option>';
+                         }
+                      ?>
+                        
+                        
+                    </select>
+
+        </div> 
+
+
+
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
