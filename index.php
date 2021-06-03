@@ -59,7 +59,7 @@
       <!-- /.login-logo -->
       <div class="card card-outline card-primary">
             <div class="card-header text-center">
-              <a  class="h1"><b>WEB</b>SNIT</a>
+              <a  class="h1"><b>WEB</b>SNITkkkkkkkkkkkkkkkk</a>
             </div>
         <div class="card-body">
           <p class="login-box-msg"><i>Online</i> <b>Accounting</b> <i>Software</i></p>
