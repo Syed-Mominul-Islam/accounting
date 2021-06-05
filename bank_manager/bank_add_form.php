@@ -45,6 +45,13 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Account Number</label>
           <input type="text" name="accountnumber" class="form-control" id="exampleInputEmail1" placeholder="Enter Account Number">
+        </div>
+        <div class="form-group">
+              <label for="exampleInputPassword1">Status</label><br>
+              <input type="radio"  name="status" value='1'>
+              <label for="male">Publish</label> 
+              <input type="radio"  name="status" value='0'>
+              <label for="female">Unpublish</label><br>
         </div>          
       </div>
       <!-- /.card-body -->

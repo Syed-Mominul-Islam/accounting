@@ -47,6 +47,13 @@
       <div class="card-footer">
         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
       </div>
+      <div class="form-group">
+              <label for="exampleInputPassword1">Status</label><br>
+              <input type="radio"  name="status" value='1'>
+              <label for="male">Publish</label> 
+              <input type="radio"  name="status" value='0'>
+              <label for="female">Unpublish</label><br>
+        </div>
     </form>
   </div>
     <!-- /.card -->

@@ -67,14 +67,14 @@
             $no_of_records_per_page = 5;
             $offset = ($pageno - 1) * $no_of_records_per_page;
 
-            $total_pages_sql = "SELECT COUNT(id) AS total_rows FROM snit_category_list WHERE 1";
+            $total_pages_sql = "SELECT COUNT(id) AS total_rows FROM snit_category_list WHERE deleted = 0 ";
             $res = $database->conn->query($total_pages_sql);
             $row = mysqli_fetch_array($res);
             $total_rows = $row['total_rows'];
             $total_pages = ceil($total_rows / $no_of_records_per_page);
 
           
-            $select_query = "SELECT * FROM snit_category_list WHERE 1 ORDER BY id ASC LIMIT $offset, $no_of_records_per_page";
+            $select_query = "SELECT * FROM snit_category_list WHERE deleted = 0 ORDER BY id ASC LIMIT $offset, $no_of_records_per_page";
             $result = $database->conn->query($select_query);
 
             while($row = mysqli_fetch_array($result)) {

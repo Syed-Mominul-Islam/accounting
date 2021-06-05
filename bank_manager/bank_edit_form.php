@@ -57,6 +57,13 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Account Number</label>
                   <input type="text" name="accountnumber" class="form-control" id="exampleInputEmail1" placeholder="Enter Account Number" value="<?php echo $row['account_number']; ?>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Status</label><br>
+                  <input type="radio"  name="status" <?php if($row['status'] == 1){ ?>  checked="checked"  <?php } ?> value='1'>
+                  <label for="male">Publish</label> 
+                  <input type="radio"  name="status" <?php if($row['status'] == 0){ ?>  checked="checked"  <?php } ?> value='0'>
+                  <label for="female">Unpublish</label><br>
                 </div>                                         
               </div>
               <!-- /.card-body -->
