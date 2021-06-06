@@ -138,6 +138,14 @@ $active = '';
         </li>
       </ul>
     </li>
+    <li class="nav-item <?php if($first_path == 'setting') { $active = 'active'; ?> menu-open <?php } ?>">
+      <a  href="/setting/setting.php" class="nav-link <?php echo $active; $active = ''; ?> ">
+        <i class="fas fa-cog"></i>
+        <p>
+           Setting  
+        </p>
+      </a>
+    </li> 
   </ul>
 </nav>
 </div>

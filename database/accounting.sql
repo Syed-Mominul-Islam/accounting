@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2021 at 04:30 PM
+-- Generation Time: Jun 06, 2021 at 08:04 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -89,6 +89,27 @@ INSERT INTO `snit_category_list` (`id`, `category_name`, `status`, `deleted`, `c
 (20, 'feiu ghefkbnr', 0, 0, '', '0000-00-00', '', '0000-00-00'),
 (21, 'llllllllllllllllllll', 0, 0, '', '0000-00-00', '', '0000-00-00'),
 (22, 'jjjjjj', 1, 0, '17', '2021-06-05', '', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `snit_settings`
+--
+
+CREATE TABLE `snit_settings` (
+  `number_of_items_per_page` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `snit_settings`
+--
+
+INSERT INTO `snit_settings` (`number_of_items_per_page`) VALUES
+(23),
+(23),
+(23),
+(23),
+(23);
 
 -- --------------------------------------------------------
 
