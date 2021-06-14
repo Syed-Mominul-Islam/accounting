@@ -36,7 +36,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form id="quickForm" action="add_action.php" method="POST">
+    <form id="quickForm" action="add_action.php" method="POST" enctype="multipart/form-data">
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">First Name</label>
@@ -57,10 +57,14 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-        </div>
+        </div>         
          <div class="form-group">
           <label for="exampleInputPassword1">Retype Password</label>
           <input type="password" name="retypepassword" class="form-control" id="exampleInputPassword1" placeholder="Enter Retype Password">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputimage">Select image to upload:</label>
+          <input type="file" name="fileToUpload" class="form-control" id="fileToUpload" placeholder="Enter Bank Name">
         </div> 
 
 

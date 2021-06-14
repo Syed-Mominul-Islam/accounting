@@ -48,7 +48,7 @@
             $row = mysqli_fetch_array($result);
             ?>
             <!-- form start -->
-            <form id="quickForm" action="edit_action.php?id=<?php echo $id ?>" method="POST">
+            <form id="quickForm" action="edit_action.php?id=<?php echo $id ?>" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Fast Name</label>
@@ -70,8 +70,10 @@
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="<?php echo $row['password']; ?>">
                 </div>
-
-
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Select image to upload:</label>
+                    <input type="file" name="fileToUpload" class="form-control" id="fileToUpload" placeholder="Enter Bank Name" value="<?php echo $row['profile_image']; ?>">
+                </div> 
                 <div class="form-group">    
       
                     <label for="exampleInputPassword1">User Role</label>
@@ -80,15 +82,12 @@
                          $user_role_quary = "select id, role_name  from snit_user_role_list where 1";
                          $update = $db->query($user_role_quary);
 
-
-                         while ($role = mysqli_fetch_array($update)) {
-                            
-                          echo '<option selected="selected" value="'.$role['id'].'">'.$role['role_name'].'</option>';
+                         while ($role = mysqli_fetch_array($update)) {                            
+                         echo '<option selected="selected" value="'.$role['id'].'">'.$role['role_name'].'</option>';
                          }
                       ?>                                               
                     </select>
-               </div> 
-                  
+               </div>                   
                 <div class="form-group">
                   <label for="exampleInputPassword1">Status</label><br>
                   <input type="radio"  name="status" <?php if($row['status'] == 1){ ?>  checked="checked"  <?php } ?> value='1'>
