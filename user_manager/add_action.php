@@ -16,12 +16,12 @@ if(isset($_POST['submit'])) {
   $email = $_POST['email'];       
   $raw_password = $_POST['password'];
   $pword = password_hash($raw_password, PASSWORD_DEFAULT );
-  $user_role_id = $_POST['user_role_id']; 
-  $status = $_POST['status'];
-  $created_by = $_SESSION['id'];
+  $user_role_id = !empty($_POST['user_role_id']) ? $_POST['user_role_id'] : 0 ; 
+  $status = !empty($_POST['status']) ? $_POST['status'] : 0 ;
+  $created_by = !empty($_SESSION['id']) ? $_SESSION['id'] : 0;
   $created_date = date('Y-m-d');
   
-  $inser_query = "INSERT INTO snit_user_list (first_name, last_name, username, email, password, profile_image, user_role_id, status, created_by, created_date ) VALUES ( '$first_name', '$lastname', '$user_name', '$email', '$pword', '$profile_image', '$user_role_id', '$status', '$created_by', '$created_date' )";
+  $inser_query = "INSERT INTO snit_user_list (first_name, last_name, username, email, password, profile_image, user_role_id, status, created_by, created_date ) VALUES ( '$first_name', '$lastname', '$user_name', '$email', '$pword', '$profile_image', '$user_role_id', '$status', '$created_by', '$created_date' )"; 
 
   $db->query($inser_query);
   header("location: user_list.php");

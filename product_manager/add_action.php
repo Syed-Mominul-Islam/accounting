@@ -13,12 +13,11 @@ if(isset($_POST['submit'])) {
   $barcode = $_POST['barcode'];
   $saleprize = $_POST['saleprize'];
   $printquantity = $_POST['printquantity'];
-  $status = $_POST['status'];
+  $status = !empty($_POST['status']) ? $_POST['status'] : 0 ;
   $created_by = $_SESSION['id'];
   $created_date = date('Y-m-d');
   
- $inser_query = "INSERT INTO snit_product_list (category_id, product_name, product_number, description, party_id, barcode, sale_price, print_quantity,   status, created_by, created_date ) VALUES ( '$categoryid', '$productname', '$productnumber', '$description', '$party_id', '$barcode', '$saleprize', '$printquantity', '$status', '$created_by', '$created_date' )"; 
-
+  $inser_query = "INSERT INTO snit_product_list (category_id, product_name, product_number, description, party_id, barcode, sale_price, print_quantity,   status, created_by, created_date ) VALUES ( '$categoryid', '$productname', '$productnumber', '$description', '$party_id', '$barcode', '$saleprize', '$printquantity', '$status', '$created_by', '$created_date' )"; 
   $db->query($inser_query);
   header("location: product_list.php");
 }

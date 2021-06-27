@@ -1,5 +1,5 @@
 <!-- Brand Logo -->
-<a href="dashboard.php" class="brand-link">
+<a href="/dashboard/dashboard.php" class="brand-link">
   <span class="brand-text font-weight-light">Accounting Software</span>
 </a>
 
@@ -138,7 +138,7 @@ $active = '';
         </li>
       </ul>
     </li>
-    <li class="nav-item <?php if($first_path == 'general_ledger') { $active = 'active'; ?> menu-open <?php } ?>">
+    <li class="nav-item <?php if($first_path == 'general_ledger_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
        <i class="fas fa-book-reader"></i>
         <p>
@@ -249,6 +249,29 @@ $active = '';
           <a href="/fixt_asset_manager/fixt_asset_list.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>Fixt Asset List</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+     <li class="nav-item <?php if($first_path == 'permission_manager') { $active = 'active'; ?> menu-open <?php } ?>">
+      <a  class="nav-link <?php echo $active; $active = ''; ?>">
+      <i class="fas fa-drum"></i>
+        <p>
+          Permission Manager
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="/permission_manager/permission_add_form.php" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p> Add new Permission</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/permission_manager/permission_list.php" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Permission List</p>
           </a>
         </li>
       </ul>

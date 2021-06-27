@@ -40,7 +40,7 @@
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">Bank  Name</label>
-          <input type="text" name="bankname" class="form-control" id="exampleInputEmail1" placeholder="Enter Bank Name">
+          <input type="text" name="bankname" class="form-control" id="exampleInputEmail1" placeholder="Enter Bank Name" required>
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Account Number</label>

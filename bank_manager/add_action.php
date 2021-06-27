@@ -7,7 +7,7 @@ if(isset($_POST['submit'])) {
   
   $first_name = $_POST['bankname'];
   $lastname = $_POST['accountnumber'];
-  $status = $_POST['status'];
+  $status = !empty($_POST['status']) ? $_POST['status'] : 0 ;
   $created_by = $_SESSION['id'];
   $created_date = date('Y-m-d');
  

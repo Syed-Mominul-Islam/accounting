@@ -7,7 +7,7 @@ if(isset($_POST['submit'])) {
   session_start();
   $ledger_name = $_POST['firstname'];
   $type = $_POST['type'];
-  $status = $_POST['status'];
+  $status = !empty($_POST['status']) ? $_POST['status'] : 0 ;
   $created_by = $_SESSION['id'];
   $created_date = date('Y-m-d'); 
   

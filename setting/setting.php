@@ -43,7 +43,7 @@
             <?php   
             if(isset($_POST['submit'])){
             $number_of_items_per_page = $_POST['number_of_items_per_page'];
-            $update = "UPDATE snit_settings SET number_of_items_per_page = '$number_of_items_per_page' ";
+            $update = "UPDATE snit_settings SET number_of_items_per_page = '$number_of_items_per_page' "; 
             $result = $db->query($update);
             }         
             
@@ -56,7 +56,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Number of Iteams Per Page</label>
-                  <input type="text" name="number_of_items_per_page" class="form-control" id="exampleInputEmail1" placeholder="Number Of Iteam Page" value="<?php echo $row['number_of_items_per_page']; ?>">
+                  <input type="text" name="number_of_items_per_page" class="form-control" id="exampleInputEmail1" placeholder="Number Of Iteam Page" value="<?php if(!empty($row['number_of_items_per_page'])) { echo $row['number_of_items_per_page']; } ?>">
                 </div> 
                                         
               </div>

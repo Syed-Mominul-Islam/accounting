@@ -18,7 +18,7 @@ if(isset($_POST['submit'])) {
   $party_bank_ac_no = $_POST['party_bank_ac_no'];
   $party_cheque_routing_no = $_POST['party_cheque_routing_no']; 
   $party_type = $_POST['party_type'];
-  $status = $_POST['status'];
+  $status = !empty($_POST['status']) ? $_POST['status'] : 0 ;
   $created_by = $_SESSION['id'];
   $created_date = date('Y-m-d');
   

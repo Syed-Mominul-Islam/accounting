@@ -8,7 +8,7 @@ if(isset($_POST['submit'])) {
 
 $bankname = $_POST['bankname'];
 $accountnumber = $_POST['accountnumber'];
-$status = $_POST['status'];
+$status = !empty($_POST['status']) ? $_POST['status'] : 0 ;
 $updated_by = $_SESSION['id'];
 $updated_date = date('Y-m-d');
 
