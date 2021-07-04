@@ -8,6 +8,7 @@
 </aside>
     <!-- /.sidebar -->
 
+<link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -41,8 +42,10 @@
             </div>
             <!-- /.card-header -->
             <?php 
-            
+
             $id = $_REQUEST['id'];
+            $permissions = $user->get_user_role_permissions($id);
+
             $edit_query = "SELECT * FROM snit_user_role_list WHERE id = $id";
             $result = $db->query($edit_query);
             $row = mysqli_fetch_array($result);
@@ -54,6 +57,25 @@
                   <label for="exampleInputEmail1">Role Name</label>
                   <input type="text" name="rolename" class="form-control" id="exampleInputEmail1" placeholder="Enter Role Name" value="<?php echo $row['role_name']; ?>">
                 </div>
+
+                <div class="form-group">
+                  <div class="bold"><strong>Permission List</strong></div>
+                  <?php
+                    $permission_query = "SELECT id, permission_name FROM snit_permission_list WHERE deleted = 0 AND status = 1";
+                    $permission_result = $db->query($permission_query);
+                    while($permission = mysqli_fetch_array($permission_result)) { ?>
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="checkboxPrimary<?php echo $permission['id']; ?>" name="permissions[]" value="<?php echo $permission['id']; ?>" <?php if(in_array($permission['id'], $permissions)) { echo "checked"; }?>>
+                        <label for="checkboxPrimary<?php echo $permission['id'];  ?>">
+                          <?php echo $permission['permission_name']; ?>
+                        </label>
+                      </div>
+                  <?php
+                    }
+                  ?>
+                </div>
+
+
                 <div class="form-group">
                   <label for="exampleInputPassword1">Status</label><br>
                   <input type="radio"  name="status" <?php if($row['status'] == 1){ ?>  checked="checked"  <?php } ?> value='1'>

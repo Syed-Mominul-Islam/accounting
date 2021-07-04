@@ -27,6 +27,12 @@
   </div>
 </div>
 <?php 
+//permission code
+include('../includes/user.class.php');
+$user = new user($db);
+$permissions = $user->get_user_role_permissions($_SESSION['role_id']);
+
+// selected menu code
 $paths = parse_url($_SERVER['REQUEST_URI']);
 $segments = explode('/', $paths['path']);
 $first_path = $segments[1];
@@ -253,37 +259,42 @@ $active = '';
         </li>
       </ul>
     </li>
-     <li class="nav-item <?php if($first_path == 'permission_manager') { $active = 'active'; ?> menu-open <?php } ?>">
-      <a  class="nav-link <?php echo $active; $active = ''; ?>">
-      <i class="fas fa-drum"></i>
-        <p>
-          Permission Manager
-          <i class="right fas fa-angle-left"></i>
-        </p>
-      </a>
-      <ul class="nav nav-treeview">
-        <li class="nav-item">
-          <a href="/permission_manager/permission_add_form.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p> Add new Permission</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="/permission_manager/permission_list.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>Permission List</p>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="nav-item <?php if($first_path == 'setting') { $active = 'active'; ?> menu-open <?php } ?>">
-      <a  href="/setting/setting.php" class="nav-link <?php echo $active; $active = ''; ?> ">
-        <i class="fas fa-cog"></i>
-        <p>
-           Setting  
-        </p>
-      </a>
-    </li> 
+    <?php if(in_array(49,$permissions)) : ?>
+      <li class="nav-item <?php if($first_path == 'permission_manager') { $active = 'active'; ?> menu-open <?php } ?>">
+        <a  class="nav-link <?php echo $active; $active = ''; ?>">
+        <i class="fas fa-drum"></i>
+          <p>
+            Permission Manager
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/permission_manager/permission_add_form.php" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p> Add new Permission</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/permission_manager/permission_list.php" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Permission List</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+    <?php endif; ?>
+
+    <?php if(in_array(43,$permissions)) : ?>
+      <li class="nav-item <?php if($first_path == 'setting') { $active = 'active'; ?> menu-open <?php } ?>">
+        <a  href="/setting/setting.php" class="nav-link <?php echo $active; $active = ''; ?> ">
+          <i class="fas fa-cog"></i>
+          <p>
+             Setting
+          </p>
+        </a>
+      </li>
+    <?php endif; ?>
   </ul>
 </nav>
 </div>

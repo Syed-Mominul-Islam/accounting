@@ -41,11 +41,7 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Role Name</label>
           <input type="text" name="rolename" class="form-control"  placeholder="Enter Role Name">
-        </div> 
-        <div class="form-group">    
-      
-            <label for="exampleInputPassword1">User Role</label>
-        </div> 
+        </div>
         <div class="form-group">
               <label for="exampleInputPassword1">Status</label><br>
                    <input type="radio"  name="status" value='1'>

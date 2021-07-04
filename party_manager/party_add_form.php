@@ -31,9 +31,9 @@
   <div class="col-md-12">
     <!-- jquery validation -->
     <div class="card card-primary">
-    <div class="card-header">
+      <div class="card-header">
         <h3 class="card-title"> Add New Party</h3>
-    </div>
+      </div>
     <!-- /.card-header -->
     <!-- form start -->
     <form id="quickForm" action="party_add_action.php" method="POST" enctype="multipart/form-data">
@@ -103,9 +103,8 @@
         			<label for="female">Unpublish</label><br>
         </div>
         
-        </div>
-
       </div>
+
       <!-- /.card-body -->
       <div class="card-footer">
         <button type="submit" class="btn btn-primary" name="submit">Submit</button>

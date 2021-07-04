@@ -27,7 +27,7 @@
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            $quary = "SELECT id, first_name, last_name,profile_image, password FROM snit_user_list WHERE email = '$username' OR username = '$username'";
+            $quary = "SELECT id, first_name, last_name,profile_image, password, user_role_id FROM snit_user_list WHERE email = '$username' OR username = '$username'";
 
             $result = $db->query($quary);
             $row = mysqli_fetch_array($result);
@@ -43,6 +43,7 @@
               $_SESSION['first_name'] = $row['first_name'];
               $_SESSION['last_name'] = $row['last_name'];
               $_SESSION['profile_image'] = $row['profile_image'];
+              $_SESSION['role_id'] = $row['user_role_id'];
               header('Location: dashboard/dashboard.php');
             } else {
 

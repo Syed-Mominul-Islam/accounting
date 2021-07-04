@@ -75,18 +75,17 @@
                     <input type="file" name="fileToUpload" class="form-control" id="fileToUpload" placeholder="Enter Bank Name" value="<?php echo $row['profile_image']; ?>">
                 </div> 
                 <div class="form-group">    
-      
-                    <label for="exampleInputPassword1">User Role</label>
-                    <select class="form-control select2" style="width: 100%;" name="user_role_id" id="cars">
-                      <?php 
-                         $user_role_quary = "select id, role_name  from snit_user_role_list where 1";
-                         $update = $db->query($user_role_quary);
-
-                         while ($role = mysqli_fetch_array($update)) {                            
-                         echo '<option selected="selected" value="'.$role['id'].'">'.$role['role_name'].'</option>';
-                         }
-                      ?>                                               
-                    </select>
+                  <label for="exampleInputPassword1">User Role</label>
+                  <select class="form-control select2" style="width: 100%;" name="user_role_id" id="cars">
+                    <?php
+                       $user_role_quary = "select id, role_name  from snit_user_role_list where 1";
+                       $user_role_result = $db->query($user_role_quary);
+                       while ($role = mysqli_fetch_array($user_role_result)) {
+                        $selected = ($role['id'] == $row['user_role_id']) ? 'selected' : '' ;
+                        echo '<option '.$selected.' value="'.$role['id'].'">'.$role['role_name'].'</option>';
+                       }
+                    ?>
+                  </select>
                </div>                   
                 <div class="form-group">
                   <label for="exampleInputPassword1">Status</label><br>

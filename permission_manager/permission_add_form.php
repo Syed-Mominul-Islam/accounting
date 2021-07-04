@@ -11,13 +11,14 @@
   <div class="container-fluid">
   <div class="row mb-2">
   <div class="col-sm-6">
-      <h1><b>Permission </b>Management</h1>
-  </div>
-  <div class="col-sm-6">
-  <ol class="breadcrumb float-sm-right">
-     <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
+    <h1><b>Permission </b>Management</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
       <li class="breadcrumb-item active">Permission  Add</li>
-  </ol>
+    </ol>
+  </div>
+  <div class="col-sm-6 text-right">
+    <a href="/permission_manager/permission_list.php" class="btn btn-primary"><i class="fa fa-list"></i> Permission List</a>
   </div>
   </div>
   </div><!-- /.container-fluid -->

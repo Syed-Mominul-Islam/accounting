@@ -71,7 +71,7 @@ class account
     {
       if(!$list_name){ $list_name = 'company_id'; }
       if($req == 'required'){$req = 'required';}
-      $query = 'SELECT * FROM tbl_party WHERE published = 1 AND deleted = 0 ORDER BY com_name';
+      $query = 'SELECT * FROM snit_party WHERE published = 1 AND deleted = 0 ORDER BY com_name';
       $res = $this->conn->query($query);
       $party_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$req.' class="searchable" style="width:350px">';
       $party_list = $party_list.'<option value="">Select Company</option>';
@@ -90,7 +90,7 @@ class account
 
     public function ap_ar_partylist($party_id='',$type,$edit_id=null)
     {
-        $comquery = "SELECT id, com_name FROM tbl_party WHERE published = 1 AND deleted = 0 ORDER BY id";
+        $comquery = "SELECT id, com_name FROM snit_party WHERE published = 1 AND deleted = 0 ORDER BY id";
         $com = $this->conn->query($comquery);
         $i = 0;	$j=0;
         $ap_party_list= '<select name="'.$party_id.'" class="searchable" style="width:200px; height:30px important!" onChange="showUser(this.value)"><option value="">Select Company</option>';
@@ -98,7 +98,7 @@ class account
         while($company = mysqli_fetch_array($com))
         {
             $company_id = $company['id'];
-            $query = "SELECT p.company_id,p.bank_id,p.product_id,p.bill_type,p.types,p.amount,p.save_date,p.bill_no,p.id FROM tbl_party_transaction AS p WHERE p.company_id = $company_id ORDER BY p.company_id";
+            $query = "SELECT p.company_id,p.bank_id,p.product_id,p.bill_type,p.types,p.amount,p.save_date,p.bill_no,p.id FROM snit_party_transaction AS p WHERE p.company_id = $company_id ORDER BY p.company_id";
             $res = $this->conn->query($query);
             $num = mysqli_num_rows($res);
             if($num > 0)
@@ -151,7 +151,7 @@ class account
 
     public function getPartyName($party_id)
     {
-        $party_name_query = "SELECT *FROM tbl_party where id =".$party_id;
+        $party_name_query = "SELECT *FROM snit_party where id =".$party_id;
         $res = $this->conn->query($party_name_query);
         $row = mysqli_fetch_array($res);
         return $row['com_name'];
@@ -161,7 +161,7 @@ class account
         if(!$select_name){ $select_name = 'product_id'; }
         if(!$select_id){ $select_id = 'product_id'; }
         if($req == 'required'){$req = 'required';}
-        $product_query = 'SELECT *FROM tbl_products WHERE published = 1 AND deleted = 0 ORDER BY product_number';
+        $product_query = 'SELECT *FROM snit_products WHERE published = 1 AND deleted = 0 ORDER BY product_number';
         $pro_res = $this->conn->query($product_query);
         $products = '<select id="'.$select_id.'" name="'.$select_name.'" '.$req.' style="width:350px" class="products">';
         if($selected_id != 0){
@@ -176,7 +176,7 @@ class account
     {
         if(!$list_name){ $list_name = 'product_unit_id'; }
 	    if($req == 'required'){$req = 'required';}
-        $query = 'SELECT * FROM tbl_product_units WHERE status = 1 AND deleted = 0 ORDER BY unit_name';
+        $query = 'SELECT * FROM snit_product_units WHERE status = 1 AND deleted = 0 ORDER BY unit_name';
 	    $res = $this->conn->query($query);
 	    $party_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$req.' style="width:90px">';
         $party_list = $party_list.'<option value="">Select Unit</option>';
@@ -195,7 +195,7 @@ class account
 
     public function product_select_list(){
 
-        $product_query = 'SELECT *FROM tbl_products WHERE published = 1 AND deleted = 0 ORDER BY id';
+        $product_query = 'SELECT *FROM snit_products WHERE published = 1 AND deleted = 0 ORDER BY id';
         $pro_res = $this->conn->query($product_query);
         $products = '<select name="product_id[]" class="fresh_list" style="width:350px" onChange="show_product_details(this);"><option value="">Select a Product</option>';
         while($product =  mysqli_fetch_array($pro_res) )
@@ -212,7 +212,7 @@ class account
             if(!$select_id){$select_id = 'purpose_id';}
 			if($req == 'required'){$req = 'required';}
 
-            $query = 'SELECT * FROM tbl_general_ledger WHERE published = 1 AND deleted = 0 ORDER BY name';
+            $query = 'SELECT * FROM snit_general_ledger WHERE published = 1 AND deleted = 0 ORDER BY name';
             $res = $this->conn->query($query);
             $str_purpose = '<select name="'.$select_id.'" '.$req.' class="select2" style="width:350px"><option value="">Select General Ledger Item</option>';
             while($purpose =  mysqli_fetch_array($res) )
@@ -247,7 +247,7 @@ class account
 			$req = '';
 		}
 
-        $bank_query = 'SELECT * FROM tbl_bank_list WHERE published = 1 AND deleted = 0 ORDER BY id';
+        $bank_query = 'SELECT * FROM snit_bank_list WHERE published = 1 AND deleted = 0 ORDER BY id';
 		$res = $this->conn->query($bank_query);
 		$str_bank = '<select '.$bname.' class="select2" style="width:350px" '.$req.'>';
         $str_bank = $str_bank.'<option value="">Select Bank</option>';
@@ -273,7 +273,7 @@ class account
     {
       if($bank_id == null){ $cond = '';}
       else { $cond = "AND id = '$bank_id'";}
-      $bank_query = "SELECT * FROM tbl_bank_list WHERE published = 1 AND deleted = 0 $cond ";
+      $bank_query = "SELECT * FROM snit_bank_list WHERE published = 1 AND deleted = 0 $cond ";
       $res = $this->conn->query($bank_query);
       if($bank_id == null)
         {
@@ -311,12 +311,12 @@ class account
     public function getadjustname($jv_id,$action='')
     {
 
-        $jv_query = "SELECT *FROM tbl_jv WHERE id = $jv_id";
+        $jv_query = "SELECT *FROM snit_jv WHERE id = $jv_id";
         $re = $this->conn->query($jv_query);
         $row = mysqli_fetch_array($re);
 		$jv_with =	$row['jv_with'];
 
-        $jv_query = "SELECT *FROM tbl_jv WHERE id =".$row['jv_with'];
+        $jv_query = "SELECT *FROM snit_jv WHERE id =".$row['jv_with'];
         $res = $this->conn->query($jv_query);
         $row_jv = mysqli_fetch_array($res);
 
@@ -324,9 +324,9 @@ class account
         if($row_jv['jv_type_id'] == 1)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_general_transaction WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_general_transaction WHERE jv_id = $jv_with ");
 			}
-            $gen_query = "SELECT gt.purpose_id, gt.reason, g.name FROM tbl_general_transaction AS gt LEFT JOIN tbl_general_ledger AS g ON g.id = gt.purpose_id WHERE gt.id =".$row_jv['transaction_id'];
+            $gen_query = "SELECT gt.purpose_id, gt.reason, g.name FROM snit_general_transaction AS gt LEFT JOIN snit_general_ledger AS g ON g.id = gt.purpose_id WHERE gt.id =".$row_jv['transaction_id'];
             $res = $this->conn->query($gen_query);
             $row = mysqli_fetch_array($res);
             return $row['name'].' ('.$row['reason'].') ';
@@ -334,10 +334,10 @@ class account
         if($row_jv['jv_type_id'] == 2)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_party_transaction WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_party_transaction WHERE jv_id = $jv_with ");
 			}
 
-            $gen_query = "SELECT pt.company_id, p.com_name FROM tbl_party_transaction AS pt LEFT JOIN tbl_party AS p ON p.id = pt.company_id WHERE pt.id =".$row_jv['transaction_id'];
+            $gen_query = "SELECT pt.company_id, p.com_name FROM snit_party_transaction AS pt LEFT JOIN snit_party AS p ON p.id = pt.company_id WHERE pt.id =".$row_jv['transaction_id'];
             $res = $this->conn->query($gen_query);
             $row = mysqli_fetch_array($res);
             return $row['com_name'];
@@ -345,10 +345,10 @@ class account
         if($row_jv['jv_type_id'] == 3)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_bank WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_bank WHERE jv_id = $jv_with ");
 			}
 
-            $gen_query = "SELECT bt.bank_id, b.bank_name, b.account_number FROM tbl_bank AS bt LEFT JOIN tbl_bank_list AS b ON b.id = bt.bank_id WHERE bt.id =".$row_jv['transaction_id'];
+            $gen_query = "SELECT bt.bank_id, b.bank_name, b.account_number FROM snit_bank AS bt LEFT JOIN snit_bank_list AS b ON b.id = bt.bank_id WHERE bt.id =".$row_jv['transaction_id'];
             $res = $this->conn->query($gen_query);
             $row = mysqli_fetch_array($res);
             return $row['bank_name'].' - '.$row['account_number'];
@@ -356,7 +356,7 @@ class account
         if($row_jv['jv_type_id'] == 4)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_cash WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_cash WHERE jv_id = $jv_with ");
 			}
 
             return 'Cash (JV) ';
@@ -364,10 +364,10 @@ class account
         if($row_jv['jv_type_id'] == 5)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_product_purchase WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_product_purchase WHERE jv_id = $jv_with ");
 			}
 
-            $gen_query = "SELECT pp.product_id, p.product_name FROM tbl_product_purchase AS pp LEFT JOIN tbl_products AS p ON p.id = pp.product_id WHERE pp.id =".$row_jv['transaction_id'];
+            $gen_query = "SELECT pp.product_id, p.product_name FROM snit_product_purchase AS pp LEFT JOIN snit_products AS p ON p.id = pp.product_id WHERE pp.id =".$row_jv['transaction_id'];
             $res = $this->conn->query($gen_query);
             $row = mysqli_fetch_array($res);
             return $row['product_name'];
@@ -375,7 +375,7 @@ class account
         if($row_jv['jv_type_id'] == 6)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_sales WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_sales WHERE jv_id = $jv_with ");
 			}
 
             return 'Sales (JV) ';
@@ -383,7 +383,7 @@ class account
 		if($row_jv['jv_type_id'] == 7)
         {
 			if($action == "delete"){
-				$this->conn->query("DELETE FROM tbl_service WHERE jv_id = $jv_with ");
+				$this->conn->query("DELETE FROM snit_service WHERE jv_id = $jv_with ");
 			}
 
             return 'Service (JV) ';
@@ -392,11 +392,11 @@ class account
 		if($row_jv['jv_type_id'] == 8)
         {
 			if($action == "delete"){
-			     $this->conn->query("DELETE FROM tbl_fixed_asset_transaction WHERE jv_id = $jv_with ");
-                             $this->conn->query("DELETE FROM tbl_fixed_asset_depreciation WHERE fixed_asset_tr_id =".$row_jv['transaction_id']);
+			     $this->conn->query("DELETE FROM snit_fixed_asset_transaction WHERE jv_id = $jv_with ");
+                             $this->conn->query("DELETE FROM snit_fixed_asset_depreciation WHERE fixed_asset_tr_id =".$row_jv['transaction_id']);
 			}
 
-            $gen_query = "SELECT ft.fixed_asset_id, fa.asset_name FROM tbl_fixed_asset_transaction AS ft LEFT JOIN tbl_fixed_asset_list AS fa ON fa.id = ft.fixed_asset_id WHERE ft.id =".$row_jv['transaction_id'];
+            $gen_query = "SELECT ft.fixed_asset_id, fa.asset_name FROM snit_fixed_asset_transaction AS ft LEFT JOIN snit_fixed_asset_list AS fa ON fa.id = ft.fixed_asset_id WHERE ft.id =".$row_jv['transaction_id'];
             $res = $this->conn->query($gen_query);
             $row = mysqli_fetch_array($res);
             return $row['asset_name'];
@@ -412,7 +412,7 @@ class account
 
     public function update_balance($product_id,$product_quantity,$total_price,$operation){
 
-        $check_query = "SELECT * FROM tbl_balance WHERE product_id = $product_id ";
+        $check_query = "SELECT * FROM snit_balance WHERE product_id = $product_id ";
         $check_res = $this->conn->query($check_query);
         $check_row = mysqli_fetch_array($check_res);
 
@@ -424,18 +424,18 @@ class account
           $update_price = $check_row['total_price'] - $total_price;
         }
 
-        $update_query = "UPDATE tbl_balance SET product_quantity = '$update_quantity', total_price = '$update_price' WHERE product_id =  $product_id";
+        $update_query = "UPDATE snit_balance SET product_quantity = '$update_quantity', total_price = '$update_price' WHERE product_id =  $product_id";
         $this->conn->query($update_query);
 
     }
 
     public function get_last_product_trans($master_id,$product_id){
-        $max_product_query = "SELECT MAX(id) FROM tbl_store_master WHERE product_id = $product_id ";
+        $max_product_query = "SELECT MAX(id) FROM snit_store_master WHERE product_id = $product_id ";
         $res = $this->conn->query($max_product_query);
         $row = mysqli_fetch_array($res);
         $max_id = $row[0];
         if($max_id == $master_id ){
-            $pquery = "SELECT * FROM tbl_store_master  WHERE tbl_store_master.id = ".$master_id;
+            $pquery = "SELECT * FROM snit_store_master  WHERE snit_store_master.id = ".$master_id;
             $res = $this->conn->query($pquery);
             $row = mysqli_fetch_array($res);
             return '&received_id='.$row['received_id'].'&issue_id='.$row['issue_id'];
@@ -447,7 +447,7 @@ class account
 	public function check_access($val){
         if(isset($_SESSION['uid'])){
             $uid = $_SESSION['uid'];
-            $group_row = $this->conn->query("SELECT u.id, u.published, u.g_id, g.group_name, g.group_access_link, g.published FROM tbl_users AS u LEFT JOIN tbl_users_group AS g ON u.g_id = g.id WHERE u.id = $uid");
+            $group_row = $this->conn->query("SELECT u.id, u.published, u.g_id, g.group_name, g.group_access_link, g.published FROM snit_users AS u LEFT JOIN snit_users_group AS g ON u.g_id = g.id WHERE u.id = $uid");
             $res = mysqli_fetch_array($group_row);
             $access_links = $res['group_access_link'];
             $glinkar = explode(",",$access_links);
@@ -466,7 +466,7 @@ class account
 	public function tender_list($list_id='',$list_name='',$select_id,$required=''){
         if(!$list_name){ $list_name = 'tender_id'; }
 		if($required == 'required'){$required = 'required';}
-        $query = 'SELECT w.id, w.name FROM tbl_tender_list AS w WHERE status = 1';
+        $query = 'SELECT w.id, w.name FROM snit_tender_list AS w WHERE status = 1';
         $res = $this->conn->query($query);
         $str_tender_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$required.' style="width:200px"><option value="">Select Tender</option>';
         while($tender =  mysqli_fetch_array($res) ){
@@ -485,7 +485,7 @@ class account
 		if(!$list_id){$list_id = 'fixed_asset_id';}
 		if($req == 'required'){$req = 'required';}
 
-		$query = 'SELECT * FROM tbl_fixed_asset_list WHERE status = 1 AND deleted = 0 ORDER BY asset_name';
+		$query = 'SELECT * FROM snit_fixed_asset_list WHERE status = 1 AND deleted = 0 ORDER BY asset_name';
 		$res = $this->conn->query($query);
  		$str_purpose = '<select name="'.$list_id.'" '.$req.' class="searchable" style="width:350px"><option value="">Select Fixed Asset</option>';
 		while($purpose =  mysqli_fetch_array($res) ){
@@ -502,7 +502,7 @@ class account
 
 	public function get_tender_name($tender_id)
     {
-        $party_name_query = "SELECT *FROM tbl_tender_list where id =".$tender_id;
+        $party_name_query = "SELECT *FROM snit_tender_list where id =".$tender_id;
         $res = $this->conn->query($party_name_query);
         $row = mysqli_fetch_array($res);
         return $row['name'];
@@ -521,23 +521,23 @@ class account
 	}
 
 	public function get_fiscal_year_start_date(){
-		$fiscal_year_query = "SELECT * FROM tbl_settings WHERE company_id = 1";
+		$fiscal_year_query = "SELECT * FROM snit_settings WHERE company_id = 1";
 		$res = $this->conn->query($fiscal_year_query);
 		$row = mysqli_fetch_array($res);
 		return $row['fiscal_year_start_date'];
 	}
 
         public function get_fiscal_year_end_date(){
-		$fiscal_year_query = "SELECT * FROM tbl_settings WHERE company_id = 1";
+		$fiscal_year_query = "SELECT * FROM snit_settings WHERE company_id = 1";
 		$res = $this->conn->query($fiscal_year_query);
 		$row = mysqli_fetch_array($res);
 		return $row['fiscal_year_end_date'];
 	}
 
 
-	public function get_settings_data($filed_name){
-		$fiscal_year_query = "SELECT * FROM tbl_settings WHERE company_id = 1";
-		$res = $this->conn->query($fiscal_year_query);
+	public function get_settings_data($filed_name) {
+		$settings_field_query = "SELECT * FROM snit_settings WHERE 1";
+		$res = $this->conn->query($settings_field_query);
 		$row = mysqli_fetch_array($res);
 		return $row[$filed_name];
 	}
@@ -546,7 +546,7 @@ class account
     {
         if(!$list_name){ $list_name = 'category_id'; }
 		if($req == 'required'){$req = 'required';}
-        $query = 'SELECT * FROM tbl_categories WHERE status = 1 AND deleted = 0 ORDER BY category_name';
+        $query = 'SELECT * FROM snit_categories WHERE status = 1 AND deleted = 0 ORDER BY category_name';
 		$res = $this->conn->query($query);
 		$cat_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$req.' class="searchable" style="width:200px">';
         $cat_list = $cat_list.'<option value="">Select Category</option>';
@@ -565,7 +565,7 @@ class account
     }
 	public function get_bank_discount($bank_id){
 
-		$result = $this->conn->query("SELECT bank_discount FROM tbl_bank_list where id  = $bank_id");
+		$result = $this->conn->query("SELECT bank_discount FROM snit_bank_list where id  = $bank_id");
 		$row = mysqli_fetch_array($result);
 		return $row['bank_discount'];
 
@@ -575,7 +575,7 @@ class account
 
           if(!$list_name){ $list_name = 'unit_id'; }
 		if($req == 'required'){$req = 'required';}
-        $query = 'SELECT * FROM tbl_units WHERE status = 1 AND deleted = 0 ORDER BY unit_name';
+        $query = 'SELECT * FROM snit_units WHERE status = 1 AND deleted = 0 ORDER BY unit_name';
 		$res = $this->conn->query($query);
 		$party_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$req.' class="searchable" style="width:200px" onChange="showUser(this.value)">';
         $party_list = $party_list.'<option value="">Select Unit</option>';
@@ -597,7 +597,7 @@ class account
 
           if(!$list_name){ $list_name = 'vendor_id'; }
 		if($req == 'required'){$req = 'required';}
-        $query = 'SELECT * FROM tbl_vendors WHERE status = 1 AND deleted = 0 ORDER BY vendor_name';
+        $query = 'SELECT * FROM snit_vendors WHERE status = 1 AND deleted = 0 ORDER BY vendor_name';
 		$res = $this->conn->query($query);
 		$party_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$req.' class="searchable" style="width:200px">';
         $party_list = $party_list.'<option value="">Select SR</option>';
@@ -622,7 +622,7 @@ class account
     {
         if(!$list_name){ $list_name = 'department_id'; }
 		if($req == 'required'){$req = 'required';}
-        $query = 'SELECT * FROM tbl_departments WHERE status = 1 AND deleted = 0 ORDER BY department_name';
+        $query = 'SELECT * FROM snit_departments WHERE status = 1 AND deleted = 0 ORDER BY department_name';
 		$res = $this->conn->query($query);
 		$party_list = '<select id="'.$list_id.'" name="'.$list_name.'" '.$req.' class="searchable" style="width:200px" onChange="showUser(this.value)">';
         $party_list = $party_list.'<option value="">Select Department</option>';
@@ -642,7 +642,7 @@ class account
 
 
 	public function get_department_name($department_id){
-		$party_name_query = "SELECT *FROM tbl_departments where id =".$department_id;
+		$party_name_query = "SELECT *FROM snit_departments where id =".$department_id;
         $res = $this->conn->query($party_name_query);
         $row = mysqli_fetch_array($res);
         return $row['department_name'];
@@ -650,14 +650,14 @@ class account
 	}
 
        public function get_user_info($uid){
-          $user_query = "SELECT *FROM tbl_users where id =".$uid;
+          $user_query = "SELECT *FROM snit_users where id =".$uid;
           $res = $this->conn->query($user_query );
           return $row = mysqli_fetch_array($res);
        }
 
        public function get_challan_number($master_id){
 
-         $issue_challn_query = "SELECT issue_chalan_no FROM  tbl_store_issue where master_id =".$master_id;
+         $issue_challn_query = "SELECT issue_chalan_no FROM  snit_store_issue where master_id =".$master_id;
          $res = $this->conn->query($issue_challn_query );
          $row = mysqli_fetch_array($res);
          return $row['issue_chalan_no'];
@@ -680,7 +680,7 @@ class account
 
     function get_quantity($master_id){
       $total_quantity = 0;
-      $quantity_query = "SELECT issued_units from tbl_store_issue WHERE master_id = ".$master_id;
+      $quantity_query = "SELECT issued_units from snit_store_issue WHERE master_id = ".$master_id;
       $res = $this->conn->query($quantity_query);
       while($row = mysqli_fetch_array($res)){
         $total_quantity = $total_quantity + $row['issued_units'];
@@ -691,7 +691,7 @@ class account
     }
     function auto_generate_bill_no(){
         date_default_timezone_set('asia/dhaka');
-        $maxidday = self::get_last_id_today('tbl_cash');
+        $maxidday = self::get_last_id_today('snit_cash');
         $maxidday = $maxidday + 1;
         //$bill_no = date('dmYGi').'-'.$maxidday;
         $bill_no = date('dmY').'-'.$maxidday;
@@ -699,7 +699,7 @@ class account
     }
 
     public function cash_in_hand(){
-        $cash_query = "SELECT c.id, c.bill_type, c.amount, c.save_date FROM tbl_cash AS c WHERE 1 ORDER BY c.save_date, c.id ASC";
+        $cash_query = "SELECT c.id, c.bill_type, c.amount, c.save_date FROM snit_cash AS c WHERE 1 ORDER BY c.save_date, c.id ASC";
 
         $res = $this->conn->query($cash_query);
         $balance = 0;
@@ -730,7 +730,7 @@ class account
         $date = date('Y-m-d');
         $day_before = date( 'Y-m-d', strtotime( $date . ' -'.$day.' day' ) );
 
-        $sales_query = "SELECT s.product_id, s.master_id, s.master_id, s.company_id, s.bill_type, s.types, s.amount, s.save_date, s.bill_no, s.form_id, s.jv_id, s.vat, s.ait, c.com_name, b.bank_name,b.account_number, p.product_name FROM tbl_sales AS s LEFT JOIN tbl_party AS c ON s.company_id = c.id LEFT JOIN tbl_bank_list AS b ON b.id = s.bank_id LEFT JOIN tbl_products p ON p.id = s.product_id WHERE s.save_date = '$day_before' ORDER BY s.save_date, s.id ASC";
+        $sales_query = "SELECT s.product_id, s.master_id, s.master_id, s.company_id, s.bill_type, s.types, s.amount, s.save_date, s.bill_no, s.form_id, s.jv_id, s.vat, s.ait, c.com_name, b.bank_name,b.account_number, p.product_name FROM snit_sales AS s LEFT JOIN snit_party AS c ON s.company_id = c.id LEFT JOIN snit_bank_list AS b ON b.id = s.bank_id LEFT JOIN snit_products p ON p.id = s.product_id WHERE s.save_date = '$day_before' ORDER BY s.save_date, s.id ASC";
         $res = $this->conn->query($sales_query);
 
         $balance = 0;
@@ -796,7 +796,7 @@ class account
   public function get_generic_name_list($list_id='',$edit_id='',$req=''){
     if(!$list_id){$list_id = 'generic_name_id';}
     if($req == 'required'){$req = 'required';}
-    $query = "SELECT * FROM tbl_generic_list WHERE status = 1 AND deleted = 0 ORDER BY generic_name";
+    $query = "SELECT * FROM snit_generic_list WHERE status = 1 AND deleted = 0 ORDER BY generic_name";
     $res = $this->conn->query($query);
     $str_generic = '<select id="'.$list_id.'" name="'.$list_id.'" '.$req.' class="select2" style="width:350px"><option value="">Select Generic Name </option>';
     while($generic =  mysqli_fetch_array($res) ){
@@ -812,7 +812,7 @@ class account
   }
   public function get_product_name($product_id){
     if($product_id != 0){
-      $product_name_query = "SELECT *FROM tbl_products WHERE id = ".$product_id;
+      $product_name_query = "SELECT *FROM snit_products WHERE id = ".$product_id;
       $product_name_result = $this->conn->query($product_name_query);
       $product = mysqli_fetch_array($product_name_result);
       $product_name = '';

@@ -47,10 +47,11 @@
         <thead>
           <tr>
             <th style="width: 5%">ID</th>
-            <th style="width: 15%">First Name</th>
-            <th style="width: 15%">Last Name</th>
-            <th style="width: 20%">User Name</th>
-            <th style="width: 20%">Email</th>
+            <th style="width: 12%">First Name</th>
+            <th style="width: 12%">Last Name</th>
+            <th style="width: 15%">User Name</th>
+            <th style="width: 15%">Email</th>
+            <th style="width: 15%">Role</th>
             <th style="width: 25%">Actions</th>
           </tr>
         </thead>
@@ -75,7 +76,7 @@
             $total_rows = $row['total_rows'];
             $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-            $user_query = "SELECT * FROM snit_user_list WHERE deleted = 0 ORDER BY id ASC LIMIT $offset, $no_of_records_per_page";
+            $user_query = "SELECT u.*, r.role_name FROM snit_user_list AS u LEFT JOIN snit_user_role_list AS r ON r.id = u.user_role_id WHERE u.deleted = 0 ORDER BY u.id ASC LIMIT $offset, $no_of_records_per_page";
 
             $result = $database->conn->query($user_query);
 
@@ -86,6 +87,7 @@
                   <td>'.$row['last_name'].'</td>
                   <td>'.$row['username'].'</td>
                   <td>'.$row['email'].'</td>
+                  <td>'.$row['role_name'].'</td>
                   <td class="project-actions text-left">
                     <a class="btn btn-primary btn-sm" href="user_view.php?id='.$row['id'].'"> <i class="fas fa-folder"></i>View </a>                         
                     <a class="btn btn-info btn-sm" href="user_edit_form.php?id='.$row['id'].'">

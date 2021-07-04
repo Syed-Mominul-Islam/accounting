@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(empty($_SESSION['id'])) {
-  header('Location: index.php');
+  //header('Location: index.php');
 }
 include('../dbconnect/dbconnect.php');
 include('../includes/accounts.class.php');
@@ -15,7 +15,7 @@ $account = new account($db);
 <head>
 		  <meta charset="utf-8">
 		  <meta name="viewport" content="width=device-width, initial-scale=1">
-		  <title> Dashboard </title>
+		  <title> Accounting Software </title>
 
 		  <!-- Google Font: Source Sans Pro -->
 		  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

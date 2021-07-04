@@ -8,10 +8,10 @@
 </aside>
     <!-- /.sidebar -->
 
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
+<?php if(in_array(43,$permissions)) : ?>
 <section class="content-header">
 <div class="container-fluid">
 <div class="row mb-2">
@@ -79,13 +79,18 @@
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->
+<?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
 </div>
 <!-- /.content-wrapper -->
  <!-- footer Portion start -->
 <?php include('../global/footer.php') ?>
 <!-- footer portion end-->
           
-        </div>
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->

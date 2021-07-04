@@ -14,13 +14,14 @@
   <div class="container-fluid">
   <div class="row mb-2">
   <div class="col-sm-6">
-    <h1><b>Permission </b>Management</h1>
+    <h1><b>Permission </b>Manager</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
+      <li class="breadcrumb-item active">Permission List</li>
+    </ol>
   </div>
-  <div class="col-sm-6">
-  <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
-    <li class="breadcrumb-item active">Permission List</li>
-  </ol>
+  <div class="col-sm-6 text-right">
+    <a href="/permission_manager/permission_add_form.php" class="btn btn-primary"><i class="fa fa-plus"></i> Add Permission</a>
   </div>
   </div>
   </div><!-- /.container-fluid -->
@@ -64,7 +65,7 @@
 
             $range = 4;
 
-            $no_of_records_per_page = 5;
+            $no_of_records_per_page = $account->get_settings_data('number_of_items_per_page');
             $offset = ($pageno - 1) * $no_of_records_per_page;
 
             $total_pages_sql = "SELECT COUNT(id) AS total_rows FROM snit_permission_list WHERE deleted = 0 ";
@@ -95,7 +96,11 @@
           ?>
         </tbody>
       </table>
-      <?php echo $account->pagination($pageno, '/permission_manager/permission_list.php', $range, $total_pages); ?>
+      <?php
+        if($total_rows > $no_of_records_per_page ) {
+          echo $account->pagination($pageno, '/permission_manager/permission_list.php', $range, $total_pages);
+        }
+      ?>
     </div>
     <!-- /.card-body -->
   </div>
