@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 27, 2021 at 04:12 PM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Generation Time: Jul 04, 2021 at 03:22 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -194,11 +195,55 @@ CREATE TABLE `snit_permission_list` (
 --
 
 INSERT INTO `snit_permission_list` (`id`, `permission_name`, `permission_slug`, `deleted`, `status`, `created_by`, `created_date`, `updated_by`, `updated_date`) VALUES
-(1, 'aaa', 'aaa', 0, 1, 51, '2021-06-27', 0, NULL),
-(2, 'asd', 'asd', 1, 1, 51, '2021-06-27', 0, NULL),
-(3, 'kkkkkk tumi', 'ssd', 0, 1, 51, '2021-06-27', 51, '2021-06-27'),
-(4, 'aaaa', '', 1, 1, 51, '2021-06-27', 0, NULL),
-(5, 'go home', 'ssd', 1, 1, 51, '2021-06-27', 0, NULL);
+(1, 'Cash Ledger Form', 'cash-ledger-form', 0, 1, 51, '2021-06-27', 51, '2021-07-03'),
+(2, 'Cash Report', 'bank-ledger-form', 0, 1, 51, '2021-06-27', 51, '2021-07-04'),
+(3, 'Cash Ledger Edit/Delete', 'general-ledger-form', 0, 1, 51, '2021-06-27', 51, '2021-07-04'),
+(4, 'Bank Ledger Form ', 'party-ledger-form ', 0, 1, 51, '2021-06-27', 51, '2021-07-04'),
+(5, 'Bank Report', 'purchase-ledger-form ', 0, 1, 51, '2021-06-27', 51, '2021-07-04'),
+(6, 'Bank Ledger Edit/Delete ', 'sales-ledger-form ', 0, 1, 51, '2021-07-04', 0, NULL),
+(7, 'Bank Manager', 'service-ldeger-form', 0, 1, 51, '2021-07-04', 0, NULL),
+(8, 'General Ledger Form ', 'fixed-asset-ledger-form ', 0, 1, 51, '2021-07-04', 0, NULL),
+(9, 'General Ledger Report', 'opening-balance-form', 0, 1, 51, '2021-07-04', 0, NULL),
+(10, 'General Ledger Edit/Delete', 'adjust-journal-form', 0, 1, 51, '2021-07-04', 0, NULL),
+(11, 'General Ledger Manager', 'pos-form', 0, 1, 51, '2021-07-04', 0, NULL),
+(12, 'Party Ledger Form ', 'cash-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(13, 'Party Ledger Report ', 'bank-report ', 0, 1, 51, '2021-07-04', 0, NULL),
+(14, 'Party Ledger Edit/Delete ', 'general-purpose-report ', 0, 1, 51, '2021-07-04', 0, NULL),
+(15, 'Party Manager', 'party-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(16, 'Purchase Ledger Form', 'product-purchase-report ', 0, 1, 51, '2021-07-04', 0, NULL),
+(17, 'Purchase Report', 'total-product-purchase-report ', 0, 1, 51, '2021-07-04', 0, NULL),
+(18, 'Purchase Ledger Edit/Delete', 'fixed-asset-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(19, 'Product Manager', 'sales-report ', 0, 1, 51, '2021-07-04', 0, NULL),
+(20, 'Sales Ledger Form ', 'service-report', 0, 1, 51, '2021-07-04', 51, '2021-07-04'),
+(21, 'Sales Report', 'store-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(22, 'Sales Ledger Edit/Delete', 'total-stock-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(23, 'Service Ldeger Form', 'partywise-product-report', 0, 1, 51, '2021-07-04', 51, '2021-07-04'),
+(24, 'Service Report', 'daily-transaction-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(25, 'Service Ldeger Edit/Delete', 'trial-balance', 0, 1, 51, '2021-07-04', 0, NULL),
+(26, 'Service Manager', ' income-statement ', 0, 1, 51, '2021-07-04', 0, NULL),
+(27, 'Fixed Asset Ledger Form', 'notes-to-the-accounts', 0, 1, 51, '2021-07-04', 0, NULL),
+(28, 'Fixed Asset Report', 'balance-sheet', 0, 1, 51, '2021-07-04', 0, NULL),
+(29, 'Fixed Asset Ledger Edit/Delete', ' settings', 0, 1, 51, '2021-07-04', 0, NULL),
+(30, 'Fixed Asset Manager', ' user-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(31, 'Opening Balance Form', 'user-role-manager ', 0, 1, 51, '2021-07-04', 0, NULL),
+(32, 'Adjusting Journal Form ', 'bank-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(33, 'Adjusting Journal Report', 'party-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(34, 'Adjusting Journal Edit/Delete', 'general-purpose-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(35, 'Total Product Purchase Report ', 'product-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(36, 'Store Report', 'fixed-asset-manager ', 0, 1, 51, '2021-07-04', 0, NULL),
+(37, 'Store Edit/delete', 'category-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(38, 'Total Stock Report ', 'total-stock-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(39, 'Daily Transaction Report', 'daily-transaction-report', 0, 1, 51, '2021-07-04', 0, NULL),
+(40, ' Trial Balance ', 'trial-balance', 0, 0, 51, '2021-07-04', 0, NULL),
+(41, 'Income Statement ', 'income-statement', 0, 1, 51, '2021-07-04', 0, NULL),
+(42, 'Balance Sheet ', 'balance-sheet', 0, 1, 51, '2021-07-04', 0, NULL),
+(43, 'Settings', 'settings', 0, 1, 51, '2021-07-04', 0, NULL),
+(44, 'User Manager ', 'user-manager', 0, 1, 51, '2021-07-04', 51, '2021-07-04'),
+(45, 'User Role Manager ', 'user-role-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(46, 'Category Manager ', 'category-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(47, 'Product Unit Manager', 'product-unit-manager', 0, 1, 51, '2021-07-04', 0, NULL),
+(48, 'Fixed Asset Depreciation', 'fixed-asset-depreciation', 0, 1, 51, '2021-07-04', 0, NULL),
+(49, 'Permission manager', 'permission-manager', 0, 1, 3, '2021-07-04', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -266,6 +311,197 @@ INSERT INTO `snit_product_unit_list` (`id`, `unit_name`, `status`, `deleted`, `c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `snit_role_permission_map`
+--
+
+CREATE TABLE `snit_role_permission_map` (
+  `id` int(10) NOT NULL,
+  `role_id` int(10) NOT NULL,
+  `permission_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `snit_role_permission_map`
+--
+
+INSERT INTO `snit_role_permission_map` (`id`, `role_id`, `permission_id`) VALUES
+(133, 4, 1),
+(134, 4, 2),
+(135, 4, 3),
+(136, 4, 4),
+(137, 4, 5),
+(138, 4, 6),
+(139, 4, 7),
+(140, 4, 8),
+(141, 4, 9),
+(142, 4, 10),
+(143, 4, 11),
+(144, 4, 12),
+(145, 4, 13),
+(146, 4, 14),
+(147, 4, 16),
+(148, 4, 17),
+(149, 4, 18),
+(150, 4, 20),
+(151, 4, 21),
+(152, 4, 22),
+(153, 4, 23),
+(154, 4, 24),
+(155, 4, 25),
+(156, 4, 27),
+(157, 4, 28),
+(158, 4, 29),
+(159, 4, 35),
+(160, 4, 36),
+(161, 4, 38),
+(162, 4, 42),
+(163, 5, 16),
+(164, 5, 17),
+(165, 5, 18),
+(166, 5, 19),
+(167, 5, 20),
+(168, 5, 21),
+(169, 5, 22),
+(170, 5, 36),
+(171, 5, 37),
+(172, 5, 38),
+(173, 1, 1),
+(174, 1, 2),
+(175, 1, 3),
+(176, 1, 4),
+(177, 1, 5),
+(178, 1, 6),
+(179, 1, 7),
+(180, 1, 8),
+(181, 1, 9),
+(182, 1, 10),
+(183, 1, 11),
+(184, 1, 12),
+(185, 1, 13),
+(186, 1, 14),
+(187, 1, 15),
+(188, 1, 16),
+(189, 1, 17),
+(190, 1, 18),
+(191, 1, 19),
+(192, 1, 20),
+(193, 1, 21),
+(194, 1, 22),
+(195, 1, 23),
+(196, 1, 24),
+(197, 1, 25),
+(198, 1, 26),
+(199, 1, 27),
+(200, 1, 28),
+(201, 1, 29),
+(202, 1, 30),
+(203, 1, 31),
+(204, 1, 32),
+(205, 1, 33),
+(206, 1, 34),
+(207, 1, 35),
+(208, 1, 36),
+(209, 1, 37),
+(210, 1, 38),
+(211, 1, 39),
+(212, 1, 41),
+(213, 1, 42),
+(214, 1, 43),
+(215, 1, 44),
+(216, 1, 45),
+(217, 1, 46),
+(218, 1, 47),
+(219, 1, 48),
+(220, 2, 1),
+(221, 2, 2),
+(222, 2, 3),
+(223, 2, 4),
+(224, 2, 5),
+(225, 2, 6),
+(226, 2, 7),
+(227, 2, 8),
+(228, 2, 9),
+(229, 2, 10),
+(230, 2, 11),
+(231, 2, 12),
+(232, 2, 13),
+(233, 2, 14),
+(234, 2, 15),
+(235, 2, 16),
+(236, 2, 17),
+(237, 2, 18),
+(238, 2, 19),
+(239, 2, 20),
+(240, 2, 21),
+(241, 2, 22),
+(242, 2, 23),
+(243, 2, 24),
+(244, 2, 25),
+(245, 2, 26),
+(246, 2, 27),
+(247, 2, 28),
+(248, 2, 29),
+(249, 2, 30),
+(250, 2, 31),
+(251, 2, 32),
+(252, 2, 33),
+(253, 2, 34),
+(254, 2, 35),
+(255, 2, 36),
+(256, 2, 37),
+(257, 2, 38),
+(258, 2, 39),
+(259, 2, 41),
+(260, 2, 42),
+(261, 2, 46),
+(262, 2, 47),
+(263, 2, 48),
+(478, 3, 1),
+(479, 3, 2),
+(480, 3, 3),
+(481, 3, 4),
+(482, 3, 5),
+(483, 3, 6),
+(484, 3, 7),
+(485, 3, 8),
+(486, 3, 9),
+(487, 3, 10),
+(488, 3, 11),
+(489, 3, 12),
+(490, 3, 13),
+(491, 3, 14),
+(492, 3, 15),
+(493, 3, 16),
+(494, 3, 17),
+(495, 3, 18),
+(496, 3, 19),
+(497, 3, 20),
+(498, 3, 21),
+(499, 3, 22),
+(500, 3, 23),
+(501, 3, 24),
+(502, 3, 25),
+(503, 3, 26),
+(504, 3, 27),
+(505, 3, 28),
+(506, 3, 29),
+(507, 3, 30),
+(508, 3, 31),
+(509, 3, 32),
+(510, 3, 33),
+(511, 3, 34),
+(512, 3, 35),
+(513, 3, 36),
+(514, 3, 37),
+(515, 3, 38),
+(516, 3, 39),
+(517, 3, 41),
+(518, 3, 42),
+(519, 3, 47);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `snit_settings`
 --
 
@@ -279,7 +515,7 @@ CREATE TABLE `snit_settings` (
 --
 
 INSERT INTO `snit_settings` (`id`, `number_of_items_per_page`) VALUES
-(1, 30);
+(1, 20);
 
 -- --------------------------------------------------------
 
@@ -309,9 +545,11 @@ CREATE TABLE `snit_user_list` (
 --
 
 INSERT INTO `snit_user_list` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `profile_image`, `status`, `deleted`, `user_role_id`, `created_by`, `created_date`, `updated_by`, `updated_date`) VALUES
-(51, 'momin', 'moin', 'momin', 'momin@gmail.com', '$2y$10$dsjnpWBJuafmyDbxyuzaouALg6UUGOS0bt3xuqdm847iClnIDwyHy', '', 1, 0, 24, 0, '2021-06-27', NULL, NULL),
-(52, 'hhhhhhh', 'hhhhhhhh', 'hhhhhhhhh', 'hhhhhh@gmail.com', '$2y$10$kWbMShkG9byT2FeJiXWGvuHpgK3qEYIWLsd24rSmObkMhoSeSqGfu', '', 1, 1, 0, 51, '2021-06-27', NULL, NULL),
-(53, 'syed mominulKKKKKKKKKK', 'islam', 'momin', 'mominulbu56@gmail.com', '$2y$10$cVSSV2FdGfMwbZ.MdpL9QOxziOEKgiNuoVm89c/9sWT6O2hFygoka', '', 1, 0, 0, 51, '2021-06-27', 51, '2021-06-27');
+(1, 'SNIT', 'Admin', 'snit-admin', 'info@websnit.com', '$2y$10$ncB8lQgmKIcn67rj6wRoxeskBW08bQOCPhLd8auw5qgiJXoBqS9HO', '', 1, 0, 1, NULL, NULL, 1, '2021-07-04'),
+(2, 'Syed Nurul', 'Islam', 'syednurulislam', 'nurulku02@gmail.com', '$2y$10$ncB8lQgmKIcn67rj6wRoxeskBW08bQOCPhLd8auw5qgiJXoBqS9HO', '', 1, 0, 2, 1, '2021-07-04', NULL, NULL),
+(3, 'Syed Mominul', 'Islam', 'momin', 'mominulbu56@gmail.com', '$2y$10$Zsy1nXsqN1.5sNOeJixOFeenrLMwQpbv.gqqvLsV.c1GeXRgi4Z6O', '', 1, 0, 3, 1, '2021-07-04', NULL, NULL),
+(4, 'Safwan', 'Abdullah', 'safwan', 'safwan@websnit.com', '$2y$10$t27K0nTN9zxmdXE0xPE/gufyqAvsUPCYfSGnpLTjfV6L2gTAP5YqG', '', 1, 0, 4, 1, '2021-07-04', NULL, NULL),
+(5, 'Ahmad', 'Zuhayer', 'ahmad', 'ahmad@websnit.com', '$2y$10$QZW8Dht1UgSkeUzixPItyO2vSDScaA2SZcwezM.zzqPf0Q6L4VoXO', '', 1, 0, 5, 1, '2021-07-04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -335,8 +573,11 @@ CREATE TABLE `snit_user_role_list` (
 --
 
 INSERT INTO `snit_user_role_list` (`id`, `role_name`, `status`, `deleted`, `created_by`, `created_date`, `updated_by`, `updated_date`) VALUES
-(1, 'manager', 1, 0, 51, '2021-06-27', 0, NULL),
-(2, 'admin team', 1, 0, 51, '2021-06-27', 51, '2021-06-27');
+(1, 'Super Administrator', 1, 0, 51, '2021-06-27', 1, '2021-07-04'),
+(2, 'Administrator', 1, 0, 51, '2021-06-27', 1, '2021-07-04'),
+(3, 'Accounts Manager', 1, 0, 51, '2021-07-04', 3, '2021-07-04'),
+(4, 'Accounts Executive', 1, 0, 51, '2021-07-04', 51, '2021-07-04'),
+(5, 'Store Manager', 1, 0, 51, '2021-07-04', 51, '2021-07-04');
 
 --
 -- Indexes for dumped tables
@@ -388,6 +629,12 @@ ALTER TABLE `snit_product_list`
 -- Indexes for table `snit_product_unit_list`
 --
 ALTER TABLE `snit_product_unit_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `snit_role_permission_map`
+--
+ALTER TABLE `snit_role_permission_map`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -446,7 +693,7 @@ ALTER TABLE `snit_party_list`
 -- AUTO_INCREMENT for table `snit_permission_list`
 --
 ALTER TABLE `snit_permission_list`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `snit_product_list`
@@ -461,6 +708,12 @@ ALTER TABLE `snit_product_unit_list`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `snit_role_permission_map`
+--
+ALTER TABLE `snit_role_permission_map`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=520;
+
+--
 -- AUTO_INCREMENT for table `snit_settings`
 --
 ALTER TABLE `snit_settings`
@@ -470,13 +723,13 @@ ALTER TABLE `snit_settings`
 -- AUTO_INCREMENT for table `snit_user_list`
 --
 ALTER TABLE `snit_user_list`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `snit_user_role_list`
 --
 ALTER TABLE `snit_user_role_list`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
