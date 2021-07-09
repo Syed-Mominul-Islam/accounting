@@ -9,6 +9,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+   <?php if(in_array(49,$permissions)) : ?>
   <!-- Content Header (Page header) -->
   <section class="content-header">
   <div class="container-fluid">
@@ -63,7 +64,7 @@
               $pageno = 1;
             }
 
-            $range = 4;
+            $range = $account->get_settings_data('pagination_rang');
 
             $no_of_records_per_page = $account->get_settings_data('number_of_items_per_page');
             $offset = ($pageno - 1) * $no_of_records_per_page;
@@ -106,6 +107,11 @@
   </div>
   <!-- /.card -->
   </section>
+<?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

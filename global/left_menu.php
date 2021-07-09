@@ -51,7 +51,8 @@ $active = '';
            Dashboard  
         </p>
       </a>
-    </li>     
+    </li> 
+     <?php if(in_array(44,$permissions)) : ?>    
     <li class="nav-item <?php if($first_path == 'user_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
         <i class="nav-icon fas fa-user-alt"></i>
@@ -75,6 +76,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(45,$permissions)) : ?>
     <li class="nav-item <?php if($first_path == 'user_role_manager') { $active = 'active'; ?>menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
        <i class="fab fa-critical-role"></i>
@@ -98,6 +101,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(46,$permissions)) : ?>
     <li class="nav-item <?php if($first_path == 'category_manager') { $active = 'active'; ?>menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
         <i class="nav-icon fas fa-sitemap"></i>
@@ -121,6 +126,8 @@ $active = '';
         </li>
       </ul>
     </li>
+     <?php endif; ?>
+    <?php if(in_array(7,$permissions)) : ?>
     <li class="nav-item <?php if($first_path == 'bank_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
         <i class="nav-icon fas fa-landmark"></i>
@@ -144,6 +151,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(11,$permissions)) : ?>
     <li class="nav-item <?php if($first_path == 'general_ledger_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
        <i class="fas fa-book-reader"></i>
@@ -167,6 +176,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(15,$permissions)) : ?>
     <li class="nav-item <?php if($first_path == 'party_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
       <i class="far fa-handshake"></i>
@@ -190,6 +201,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(19,$permissions)) : ?>
      <li class="nav-item <?php if($first_path == 'product_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
      <i class="fab fa-product-hunt"></i>
@@ -213,6 +226,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(47,$permissions)) : ?>
      <li class="nav-item <?php if($first_path == 'product_unit_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
       <i class="fab fa-unity"></i>
@@ -236,6 +251,8 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
+    <?php if(in_array(30,$permissions)) : ?>
      <li class="nav-item <?php if($first_path == 'fixt_asset_manager') { $active = 'active'; ?> menu-open <?php } ?>">
       <a  class="nav-link <?php echo $active; $active = ''; ?>">
       <i class="fas fa-money-check-alt"></i>
@@ -259,6 +276,7 @@ $active = '';
         </li>
       </ul>
     </li>
+    <?php endif; ?>
     <?php if(in_array(49,$permissions)) : ?>
       <li class="nav-item <?php if($first_path == 'permission_manager') { $active = 'active'; ?> menu-open <?php } ?>">
         <a  class="nav-link <?php echo $active; $active = ''; ?>">

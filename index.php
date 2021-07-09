@@ -16,28 +16,23 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-
     <?php 
       $message = '';
       include('dbconnect/dbconnect.php');
       $database = new Database();
       $db = $database->getConnection();
           if (isset($_POST['signin'])){
-
             $username = $_POST['username'];
             $password = $_POST['password'];
-
             $quary = "SELECT id, first_name, last_name,profile_image, password, user_role_id FROM snit_user_list WHERE email = '$username' OR username = '$username'";
-
             $result = $db->query($quary);
             $row = mysqli_fetch_array($result);
-
+            
             if(!empty($row['password'])) {
               $dbpassword = $row['password'];
             } else {
               $dbpassword = '';
             }
-
             if(password_verify($_POST['password'], $dbpassword)) {
               $_SESSION['id'] = $row['id'];
               $_SESSION['first_name'] = $row['first_name'];
@@ -46,7 +41,6 @@
               $_SESSION['role_id'] = $row['user_role_id'];
               header('Location: dashboard/dashboard.php');
             } else {
-
                 if( empty($username) || empty($password) ) {
                    $message = "<div style='color:red'> PLEASE ENTER USERNAME AND PASSWORD</div>";
                 } else {
@@ -62,7 +56,6 @@
     </div>
     <div class="card-body">
         <p class="login-box-msg"><i>Online</i> <b>Accounting</b> <i>Software</i></p>
-
         <form id="login-form" action="" method="post">
           <div class="input-group mb-3 form-group">
             <input type="text" class="form-control" name="username" placeholder="Email / User Name">
@@ -72,7 +65,6 @@
             </div>
             </div>
           </div>
-
           <div class="input-group mb-3 form-group">
             <input type="password" class="form-control" name="password" placeholder="Password">
             <div class="input-group-append">
@@ -81,7 +73,6 @@
             </div>
             </div>
           </div>
-
           <div class="row">
             <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block" name="signin">Sign In</button>
@@ -95,7 +86,6 @@
     </div>
 </div>
 </div>
-
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <script src="plugins/jquery-validation/jquery.validate.min.js"></script>

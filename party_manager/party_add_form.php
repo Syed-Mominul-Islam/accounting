@@ -6,18 +6,20 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <?php if(in_array(15,$permissions)) : ?>
   <!-- Content Header (Page header) -->
   <section class="content-header">
   <div class="container-fluid">
   <div class="row mb-2">
   <div class="col-sm-6">
-      <h1><b>Party </b>Manager</h1>
+    <h1><b>Party </b>Manager</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
+      <li class="breadcrumb-item active">Party  Add</li>
+    </ol>
   </div>
-  <div class="col-sm-6">
-  <ol class="breadcrumb float-sm-right">
-     <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
-      <li class="breadcrumb-item active">Party Add</li>
-  </ol>
+  <div class="col-sm-6 text-right">
+    <a href="/party_manager/party_list.php" class="btn btn-primary"><i class="fa fa-list"></i> Party List</a>
   </div>
   </div>
   </div><!-- /.container-fluid -->
@@ -123,6 +125,11 @@
 <!-- /.row -->
 </div><!-- /.container-fluid -->
 </section>
+<?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
 <!-- /.content -->
 </div>
           <!-- /.content-wrapper -->

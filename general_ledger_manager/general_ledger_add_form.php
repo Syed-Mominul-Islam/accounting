@@ -6,18 +6,20 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <?php if(in_array(11,$permissions)) : ?>
   <!-- Content Header (Page header) -->
   <section class="content-header">
   <div class="container-fluid">
   <div class="row mb-2">
   <div class="col-sm-6">
-      <h1><b>General Ledger </b>Management</h1>
+    <h1><b>General Ledger </b>Manager</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
+      <li class="breadcrumb-item active">General Ledger  Add</li>
+    </ol>
   </div>
-  <div class="col-sm-6">
-  <ol class="breadcrumb float-sm-right">
-     <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
-      <li class="breadcrumb-item active">Ledger Add</li>
-  </ol>
+  <div class="col-sm-6 text-right">
+    <a href="/general_ledger_manager/general_ledger_list.php" class="btn btn-primary"><i class="fa fa-list"></i> General Ledger List</a>
   </div>
   </div>
   </div><!-- /.container-fluid -->
@@ -77,6 +79,11 @@
 <!-- /.row -->
 </div><!-- /.container-fluid -->
 </section>
+<?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
 <!-- /.content -->
 </div>
           <!-- /.content-wrapper -->

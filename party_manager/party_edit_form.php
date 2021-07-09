@@ -8,6 +8,7 @@
     <!-- /.sidebar -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <?php if(in_array(15,$permissions)) : ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <div class="container-fluid">
@@ -127,6 +128,11 @@
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
+  <?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

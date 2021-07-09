@@ -9,18 +9,20 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <?php if(in_array(30,$permissions)) : ?>
   <!-- Content Header (Page header) -->
-  <section class="content-header">
+ <section class="content-header">
   <div class="container-fluid">
   <div class="row mb-2">
   <div class="col-sm-6">
-    <h1><b>Fixed Asset </b>Manager</h1>
+    <h1><b>Fixt Asset </b>Manager</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
+      <li class="breadcrumb-item active">Fixt Asset List</li>
+    </ol>
   </div>
-  <div class="col-sm-6">
-  <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
-    <li class="breadcrumb-item active">Fixed Asset List</li>
-  </ol>
+  <div class="col-sm-6 text-right">
+    <a href="/fixt_asset_manager/fixt_asset_add_form.php" class="btn btn-primary"><i class="fa fa-plus"></i> Add Fixt Asset</a>
   </div>
   </div>
   </div><!-- /.container-fluid -->
@@ -64,9 +66,9 @@
               $pageno = 1;
             }
 
-            $range = 4;
+            $range = $account->get_settings_data('pagination_rang');
 
-            $no_of_records_per_page = 5;
+            $no_of_records_per_page = $account->get_settings_data('number_of_items_per_page');
             $offset = ($pageno - 1) * $no_of_records_per_page;
 
             $total_pages_sql = "SELECT COUNT(id) AS total_rows FROM snit_fixed_asset_list WHERE deleted = 0 ";
@@ -99,12 +101,21 @@
           ?>
         </tbody>
       </table>
-      <?php echo $account->pagination($pageno, '/fixt_asset_manager/fixt_asset_list.php', $range, $total_pages); ?>
+      <?php
+        if($total_rows > $no_of_records_per_page ) {
+          echo $account->pagination($pageno, '/fixt_asset_manager/fixt_asset_list.php',  $range, $total_pages);
+        }
+      ?>
     </div>
     <!-- /.card-body -->
   </div>
   <!-- /.card -->
   </section>
+  <?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

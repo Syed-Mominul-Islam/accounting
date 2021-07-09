@@ -5,10 +5,10 @@ class Database {
   // private $password = '';
   // private $db       = '';
 
-  private $servername       = 'localhost';
-  private $username       = 'root';
-  private $password   = '';
-  private $dbname    = 'accounting';
+  private $servername = 'localhost';
+  private $username = 'root';
+  private $password = '';
+  private $dbname = 'accounting';
 
   public $conn;
 

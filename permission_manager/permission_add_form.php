@@ -6,12 +6,13 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+   <?php if(in_array(49,$permissions)) : ?>
   <!-- Content Header (Page header) -->
   <section class="content-header">
   <div class="container-fluid">
   <div class="row mb-2">
   <div class="col-sm-6">
-    <h1><b>Permission </b>Management</h1>
+    <h1><b>Permission </b>Manager</h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/dashboard/dashboard.php">Dashboard</a></li>
       <li class="breadcrumb-item active">Permission  Add</li>
@@ -73,6 +74,11 @@
 <!-- /.row -->
 </div><!-- /.container-fluid -->
 </section>
+<?php else : ?>
+  <section class="content-header">
+    <h1 class="text-warning">Access Denied!</h1>
+  </section>
+<?php endif; ?>
 <!-- /.content -->
 </div>
           <!-- /.content-wrapper -->
